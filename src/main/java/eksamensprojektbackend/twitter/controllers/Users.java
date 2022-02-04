@@ -30,20 +30,6 @@ public class Users {
         return users.save(newUser);
     }
 
-    /*
-    @PostMapping("/hashtags/{postId}")
-    public HashtagCreateDTO addNewHashtags(@PathVariable Long postId, @RequestBody Hashtag newHashtag) {
-        return posts.findById(postId).map(post -> {
-                    newHashtag.setId(null);
-                    newHashtag.setTag();
-                    Hashtag addCandidate = hashtags.save(newHashtag);
-                    return new HashtagCreateDTO(addHashtag);
-                }
-        ).orElse(new HashtagCreateDTO("Did not add new candidate with PartyId"));
-    }
-
-     */
-
     @PutMapping("/users/{id}")
     public String updatePost(@PathVariable Long id, @RequestBody User userToUpdate) {
         if (users.existsById(id)) {
@@ -55,7 +41,6 @@ public class Users {
         }
     }
 
-
     @PatchMapping("/users/{id}")
     public String patchUser(@PathVariable Long id, @RequestBody User userToUpdate) {
         return users.findById(id).map( foundUser -> {
@@ -65,8 +50,6 @@ public class Users {
             return "User information updated";
         }).orElse("User not found/updated");
     }
-
-
 
     @DeleteMapping("/users/{id}")
     public void deleteUser(@PathVariable Long id) {

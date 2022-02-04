@@ -24,37 +24,11 @@ public class Hashtags {
         return hashtags.findById(id).get();
     }
 
-    /*
-    @GetMapping("/hashtags/posts/{id}")
-    public Iterable<Hashtag> getHashtagsByPost(@PathVariable Long id) {
-        return hashtags.findHashtagsByPostId(id);
-    }
-
-     */
-
-
-
-
     @PostMapping("/hashtags")
     public Hashtag addHashtag(@RequestBody Hashtag newHashtag) {
         newHashtag.setId(null);
         return hashtags.save(newHashtag);
     }
-
-
-    /*
-    @PostMapping("/hashtags/{postId}")
-    public HashtagCreateDTO addNewHashtags(@PathVariable Long postId, @RequestBody Hashtag newHashtag) {
-        return posts.findById(postId).map(post -> {
-                    newHashtag.setId(null);
-                    newHashtag.setTag();
-                    Hashtag addCandidate = hashtags.save(newHashtag);
-                    return new HashtagCreateDTO(addHashtag);
-                }
-        ).orElse(new HashtagCreateDTO("Did not add new candidate with PartyId"));
-    }
-
-     */
 
     @PutMapping("/hashtags/{id}")
     public String updateCandidate(@PathVariable Long id, @RequestBody Hashtag hashtagToUpdate) {
@@ -76,7 +50,6 @@ public class Hashtags {
             return "Hashtag updated";
         }).orElse("Hashtag not found/updated");
     }
-
      */
 
     @DeleteMapping("/hashtags/{id}")

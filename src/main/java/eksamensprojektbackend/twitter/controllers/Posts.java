@@ -36,7 +36,6 @@ public class Posts {
         return posts.save(newPost);
     }
 
-
     @PutMapping("/posts/{id}")
     public String updatePost(@PathVariable Long id, @RequestBody Post postToUpdate) {
         if (posts.existsById(id)) {
@@ -48,7 +47,6 @@ public class Posts {
         }
     }
 
-
     @PatchMapping("/posts/{id}")
     public String patchPost(@PathVariable Long id, @RequestBody Post postToUpdate) {
         return posts.findById(id).map( foundPost -> {
@@ -59,9 +57,7 @@ public class Posts {
             return "Post updated";
         }).orElse("Post not found/updated");
     }
-
-
-
+    
     @DeleteMapping("/posts/{id}")
     public void deletePost(@PathVariable Long id) {
         posts.deleteById(id);
